@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAST FOOD</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    body {
+      background: rgb(54, 51, 51);
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      margin: auto;
+      padding-top: 20px;
+    }
+
+    .logo {
+      color: #e78f3e;
+      font-size: 30px;
+      font-weight: bolder;
+      transition: 0.3s;
+    }
+
+    .logo:hover {
+      transform: translateX(20px);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      font-size: 15px;
+      color: #ddd8d3;
+      text-transform: uppercase;
+    }
+
+    nav ul li a:hover {
+      color: #5e3006;
+      border-bottom: 2px solid #c4c2c1;
+    }
+
+    nav button {
+      background: transparent;
+      border: 2px solid #e78f3e;
+      color: #fff;
+      padding: 12px 35px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      transform: scale(0.95);
+      background-color: #e78f3e;
+    }
+
+    .content {
+      position: absolute;
+      top: 35%;
+      left: 90px;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 45px;
+      text-transform: uppercase;
+      color: #f8f3ed;
+    }
+
+    p {
+      font-size: 15px;
+      margin-top: 10px;
+      color: #f7f5f3;
+      font-weight: bolder;
+    }
+
+    .content button {
+      margin-top: 50px;
+      background: transparent;
+      border: 2px solid #e78f3e;
+      color: #fff;
+      padding: 12px 35px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: 0.3s;
+    }
+
+    .content button:hover {
+      transform: scale(0.95);
+      background-color: #e78f3e;
+    }
+
+    .content button.know_more {
+      background: transparent;
+      border: 2px solid #e78f3e;
+      color: #e78f3e;
+      margin-left: 30px;
+    }
+
+    .content button.know_more:hover {
+      background-color: #e78f3e;
+      color: #fff;
+    }
+
+    .about {
+      background: #1f1e1e;
+      color: #f8f3ed;
+      padding: 80px 10%;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1 1 50%;
+      padding-right: 20px;
+    }
+
+    .about-text h2 {
+      font-size: 40px;
+      color: #e78f3e;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #f7f5f3;
+      font-weight: 400;
+    }
+
+    .about-btn {
+      background: transparent;
+      border: 2px solid #e78f3e;
+      color: #fff;
+      padding: 12px 35px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .about-btn:hover {
+      background-color: #e78f3e;
+      color: #fff;
+      transform: scale(0.95);
+    }
+
+    .about-image {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text {
+        padding: 0;
+      }
+
+      .about-image img {
+        max-width: 90%;
+        margin-top: 30px;
+      }
+
+      .content {
+        left: 20px;
+        right: 20px;
+      }
+
+      .content h2 {
+        font-size: 30px;
+      }
+    }
+    .menu {
+      background: #2c2b2b;
+      color: #f8f3ed;
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    .menu-title {
+      font-size: 40px;
+      color: #e78f3e;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+
+    .menu-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      background: #3e3d3d;
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h3 {
+      color: #e78f3e;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .menu-item p {
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .reviews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 2rem;
+        background:  #1d1c1c;
+        padding: 80px 10%;
+    }
+
+    .reviews .box {
+        padding: 1rem 1.5rem;
+        border: 0.1rem solid rgba(0,0,0,0.1);
+        background: #413a3a;
+        border-radius:0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    }
+
+    .reviews .box .user {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .reviews .box .user img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .reviews .box .user h3 {
+        font-size:16px;
+        color: #e78f3e;
+    }
+
+    .reviews .box .user span {
+        font-size: 12px;
+        color: #e5dacf;
+    }
+
+    .reviews .box p {
+        font-size: 15px;
+        color: #ece8e1;
+        line-height: 1.5;
+        padding-top: 1rem;
+    }
+
+    .blogs {
+      background: #1d1c1c;
+      color: #f8f3ed;
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    .blogs-title {
+      font-size: 40px;
+      color: #e78f3e;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .video-item {
+      background: #2f2e2e;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-item video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .video-item h3 {
+      color: #e78f3e;
+      margin-top: 15px;
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+    
+    .page-footer {
+        background: #1d1c1c;
+        color: #f8f3ed;
+        padding: 80px 10%;
+    }
+    
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .footer-about {
+        flex: 1;
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+    
+    .footer-connect {
+        flex: 1;
+        min-width: 300px;
+        margin-bottom: 30px;
+    }
+    
+    .page-footer h5 {
+        color: #e78f3e;
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    
+    .page-footer p {
+        color: #f7f5f3;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .page-footer ul {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .page-footer ul li {
+        margin-bottom: 0;
+    }
+    
+    .page-footer ul li a {
+        color: #f7f5f3;
+        transition: color 0.3s;
+        font-size: 24px;
+    }
+    
+    .page-footer ul li a:hover {
+        color: #e78f3e;
+    }
+    
+    .footer-copyright {
+        background: #1a1a1a;
+        padding: 20px 0;
+        text-align: center;
+    }
+    
+    .footer-copyright p {
+        color: #f7f5f3;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .contact {
+      background: #1f1e1e;
+      color: #f8f3ed;
+      padding: 80px 10%;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-size: 40px;
+      color: #e78f3e;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="./videos/burgers.mp4" type="video/mp4">
+    </video>
+
+    <nav>
+      <a href="#" class="logo">FOODIE</a>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#reviews">REVIEWS</a></li>
+        <li><a href="#blogs">BLOGS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+      <button>LOGIN</button>
+    </nav>
+
+    <div class="content">
+      <h2>A TASTE SENSATION <br>LIKE NO OTHER</h2>
+      <p>
+        Craving something delicious? Welcome to where fresh <br>
+        flavors meet fast delivery! Browse your favorite cuisines,<br>
+        customize your meals, and enjoy doorstep dining in just <br>
+        a few clicks.
+      </p>
+      <button>Get Yours Today</button>
+    </div>
+  </div>
+  
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+          At <strong>FOODIE</strong>, we're passionate about creating mouthwatering meals that satisfy your cravings fast and fresh. From juicy burgers to spicy bites, our chefs use quality ingredients to craft unforgettable flavors. Whether you're dining solo, feeding the family, or planning a feast with friends, FOODIE is your go-to destination for convenient, flavorful experiences.
+        </p>
+        <p>
+          Our mission is simple: deliver top-tier taste, unbeatable speed, and exceptional service—every time. Join thousands of happy customers who've made FOODIE part of their daily cravings!
+        </p>
+        <button class="about-btn">Explore Our Menu</button>
+      </div>
+      <div class="about-image">
+        <img src="./img/burger.jpg" alt="Delicious Burger" />
+      </div>
+    </div>
+  </section>
+  
+  <section class="menu" id="menu">
+    <h2 class="menu-title">Our Menu</h2>
+    <div class="menu-gallery">
+      <div class="menu-item">
+        <img src="./img/del.jpg" alt="Classic Burger">
+        <h3>Classic Burger</h3>
+        <p>$8.99</p>
+      </div>
+      <div class="menu-item">
+        <img src="img/brekaly.jpg" alt="Cheese Blast">
+        <h3>Cheese Blast</h3>
+        <p>$9.49</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Crispy Fries.jpg" alt="Crispy Fries">
+        <h3>Crispy Fries</h3>
+        <p>$3.99</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Pepperoni Pizza.jpg" alt="Pepperoni Pizza">
+        <h3>Pepperoni Pizza</h3>
+        <p>$12.99</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Fried Chicken.jpg" alt="Fried Chicken">
+        <h3>Fried Chicken</h3>
+        <p>$10.49</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Vanilla Ice Cream.jpg" alt="Vanilla Ice Cream">
+        <h3>Vanilla Ice Cream</h3>
+        <p>$4.49</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/McDonald's.jpg" alt="McDonald's">
+        <h3>McDonald's</h3>
+        <p>$5.99</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Wendy's.jpg" alt="Wendy's">
+        <h3>Wendy's</h3>
+        <p>$7.49</p>
+      </div>
+      <div class="menu-item">
+        <img src="./img/Chipotle.jpg" alt="Chipotle">
+        <h3>Chipotle</h3>
+        <p>$9.50</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="reviews" id="reviews">
+    <div class="box">
+      <div class="user">
+        <img src="./review/Sarah Johnson Realtor.jpg" alt="Reader 1">
+        <div class="info">
+          <h3>Sarah Johnson</h3>
+          <span>😂 Funny Reactions</span>
+        </div>
+      </div>
+      <p>Watch grown adults CRY over spicy nuggets and worship a McFlurry like it's the Holy Grail! Fast food taste tests get WILD when hunger meets drama.</p>
+    </div>
+    <div class="box">
+      <div class="user">
+        <img src="./review/Michael Brown.jpg" alt="Reader 2">
+        <div class="info">
+          <h3>Michael Brown</h3>
+          <span>🎭 Spoof-Style Review</span>
+        </div>
+      </div>
+      <p>Food Scientist' rates fast food with 100% made-up metrics! Is the Big Mac's 'crunch-to-squish ratio' acceptable?</p>
+    </div>
+    <div class="box">
+      <div class="user">
+        <img src="./review/Emily Wilson.jpg" alt="Reader 3">
+        <div class="info">
+          <h3>Emily Wilson</h3>
+          <span>🥗 Health-Focused Opinions</span>
+        </div>
+      </div>
+      <p>Nutritionist tries fast food for a week—body says 'WHY?!' We break down calories, sugar bombs, and which item is LEAST likely to kill your gains.</p>
+    </div>
+    <div class="box">
+      <div class="user">
+        <img src="./review/David Thompson.jpg" alt="Reader 4">
+        <div class="info">
+          <h3>David Thompson</h3>
+          <span>💀Taco Bell vs Our Toilets</span>
+        </div>
+      </div>
+      <p>🚽🌮 We ate nothing but Baja Blast and Crunchwraps for 24 hours. Plumbing experts weigh in.</p>
+    </div>
+  </section>
+  
+  <section class="blogs" id="blogs">
+    <h2 class="blogs-title">Our Video Blogs</h2>
+    <div class="video-gallery">
+      <div class="video-item">
+        <video controls poster="images/thumb1.jpg">
+          <source src="./videos/video4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h3>How We Make Our Signature Burger</h3>
+      </div>
+      <div class="video-item">
+        <video controls poster="images/thumb2.jpg">
+          <source src="./videos/video3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h3>Street Food Tour With Our Chef</h3>
+      </div>
+      <div class="video-item">
+        <video controls poster="images/thumb2.jpg">
+          <source src="./videos/video2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h3>Exploring the tastiest fast food joints and guilty pleasures, one bite at a time.</h3>
+      </div>
+      <div class="video-item">
+        <video controls poster="images/thumb3.jpg">
+          <source src="./videos/video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h3>Top 5 Spicy Foods You Must Try</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2 class="contact-title">Contact Us</h2>
+    <footer class="page-footer">
+      <div class="footer-container">
+        <div class="footer-connect">
+          <h5>CONNECT WITH US</h5>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i>facebook</a></li>
+            <li><a href="#"><i class="fab fa-twitter">twitter</i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i>instgram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2025 FOODIE. All rights reserved.</p>
+      </div>
+    </footer>
+  </section>
+</body>
+</html>
